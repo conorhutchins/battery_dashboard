@@ -28,13 +28,20 @@ const BatteryChart: React.FC<BatteryChartProps> = ({ isVisible }) => {
   }));
   
   return (
-    <div className="mt-6 pt-6 border-t border-border transition-all duration-500 ease-in-out">
-      <h3 className="text-lg font-semibold mb-4 text-card-foreground">Battery History (Last 24h)</h3>
+    <div className="mt-2 transition-all duration-500 transform ease-in-out">
+      <h3 className="text-lg font-semibold mb-6 text-card-foreground flex items-center">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-primary mr-2">
+          <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
+          <polyline points="17 6 23 6 23 12"></polyline>
+        </svg>
+        Battery History (Last 24h)
+      </h3>
       <div className="h-64">
         <ResponsiveContainer width="100%" height="100%">
           <LineChart
             data={chartData}
             margin={{ top: 5, right: 5, left: 0, bottom: 5 }}
+            className="animate-fadeIn"
           >
             <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" />
             <XAxis 
