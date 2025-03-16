@@ -1,36 +1,111 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Battery Dashboard
+
+A responsive, interactive battery monitoring dashboard built with Next.js and Tailwind CSS. The dashboard displays your device's battery information with a sleek UI and interactive charge history chart.
+
+## Features
+
+- Real-time battery status monitoring
+- Interactive charge history graph
+- Light and dark mode support
+- Responsive design for all devices
+- Animated UI with modern design principles
+- Battery level visualisation
+- Charging status indicators
+
+## Screenshots
+
+The dashboard has four main display modes:
+
+### Light Mode (Collapsed and Expanded)
+<img src="./screenshots/lightCollapsed.png" height="300" alt="Battery Card Light Collapsed">
+<img src="./screenshots/lightExpanded.png" height="300" alt="Battery Card Light Expanded">
+
+### Dark Mode (Collapsed and Expanded)
+<img src="./screenshots/darkCollapsed.png" height="300" alt="Battery Card Dark Collapsed">
+<img src="./screenshots/darkExpanded.png" height="300" alt="Battery Card Dark Expanded">
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+- Node.js 16.x or later
+- npm or yarn
+
+### Installation
+
+1. Clone the repository:
+
+```bash
+git clone https://github.com/yourusername/battery-dashboard.git
+cd battery-dashboard
+```
+
+2. Install dependencies:
+
+```bash
+npm install
+# or
+yarn install
+```
+
+3. Start the development server:
 
 ```bash
 npm run dev
 # or
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+4. Open [http://localhost:3000](http://localhost:3000) in your browser to see the dashboard.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Usage
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **View Battery Status**: The main card displays your current battery level, charging status, and capacity.
+- **See Charge History**: Click on the battery card to expand and view your battery's charge history over time.
+- **Switch Themes**: Toggle between light and dark modes using the theme button in the top right corner.
 
-## Learn More
+## How It Works
 
-To learn more about Next.js, take a look at the following resources:
+The dashboard uses the Web Battery API to gather information about your device's battery. If this API isn't available, it falls back to simulated data.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Key components:
+- `BatteryCard.tsx`: Main UI component displaying battery information
+- `BatteryChart.tsx`: Interactive chart showing battery level history
+- `useBattery.ts`: Custom hook that manages battery state
+- `batteryUtils.ts`: Utility functions for formatting and processing battery data
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Technologies Used
 
-## Deploy on Vercel
+- **Next.js**: React framework for server-rendered applications
+- **Tailwind CSS**: Utility-first CSS framework
+- **Recharts**: Composable charting library for React
+- **TypeScript**: Typed JavaScript
+- **Web Battery API**: Browser API for accessing battery information
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Customisation
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Changing Colors
+
+Edit the color variables in `src/app/globals.css` to customize the theme colors.
+
+### Adding Multiple Batteries
+
+The architecture supports monitoring multiple batteries. To implement this:
+
+1. Modify the `useBatteryData` hook to track multiple battery sources
+2. Update the UI to display multiple battery cards
+3. Adjust the chart to allow selecting which battery history to display
+
+## Browser Support
+
+The dashboard works best in browsers that support the Web Battery API:
+- Chrome
+- Firefox
+- Edge
+- Opera
+
+In browsers without battery API support, it will use simulated data for demonstration purposes.
+
+---
+
+Made with ❤️ by Conor
