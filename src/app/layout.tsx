@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 // Remove the font import temporarily to fix the error
 // import { Inter } from 'next/font/google';
 import './globals.css';
-import { ThemeProvider } from './components/ThemeProvider';
+import { ThemeProvider } from './components/ThemeProvider/ThemeProvider';
 
 // const inter = Inter({ subsets: ['latin'] });
 

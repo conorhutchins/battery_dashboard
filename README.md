@@ -71,7 +71,7 @@ The dashboard uses the Web Battery API to gather information about your device's
 Key components:
 - `BatteryCard.tsx`: Main UI component displaying battery information
 - `BatteryChart.tsx`: Interactive chart showing battery level history
-- `useBattery.ts`: Custom hook that manages battery state
+- `useBatteryData.ts`: Custom hook that manages battery state
 - `batteryUtils.ts`: Utility functions for formatting and processing battery data
 
 ## Technologies Used

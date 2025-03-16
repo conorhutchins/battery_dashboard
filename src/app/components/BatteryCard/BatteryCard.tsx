@@ -1,9 +1,9 @@
 'use client';
 
 import React, { useState } from 'react';
-import { useBattery } from '../_hooks/useBattery';
-import { formatLastUpdatedTime } from '../utils/batteryUtils';
-import BatteryChart from './BatteryChart';
+import { useBattery } from '../../_hooks/useBattery';
+import { formatLastUpdatedTime } from '../../utils/batteryUtils';
+import BatteryChart from '../BatteryChart/BatteryChart';
 
 const BatteryCard: React.FC = () => {
   const [isExpanded, setIsExpanded] = useState(false);
