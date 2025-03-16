@@ -1,5 +1,5 @@
-import BatteryCard from './components/BatteryCard';
-import { ThemeToggle } from './components/ThemeToggle';
+import BatteryCard from '../components/BatteryCard/BatteryCard';
+import { ThemeToggle } from '../components/ThemeToggle/ThemeToggle';
 
 export default function Home() {
   return (
