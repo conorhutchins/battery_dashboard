@@ -5,11 +5,10 @@
   "scripts": {
     "dev": "next dev",
     "dev:turbo": "next dev --turbopack",
-    "dev:turbo:safe": "node scripts/run-turbo.js",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "test": "jest"
+    "test": "jest --config jest.config.js"
   },
   "dependencies": {
     "next": "15.2.2",
