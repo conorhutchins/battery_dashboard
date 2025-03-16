@@ -1,7 +1,7 @@
 import { render, screen, fireEvent, act } from '../../test-utils/test-utils';
 import BatteryCard from './BatteryCard';
 import { mockBattery } from '../../data/batteryMockData';
-import { useBattery } from '../../hooks/useBattery';
+import { useBattery } from '../../hooks/useBatteryData/useBattery';
 
 jest.mock('../BatteryChart/BatteryChart', () => ({
   __esModule: true,
@@ -10,7 +10,7 @@ jest.mock('../BatteryChart/BatteryChart', () => ({
   )
 }));
 
-jest.mock('../../hooks/useBattery', () => ({
+jest.mock('../../hooks/useBatteryData/useBattery', () => ({
   useBattery: jest.fn()
 }));
 

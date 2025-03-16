@@ -6,7 +6,13 @@ module.exports = {
   },
   testPathIgnorePatterns: ['<rootDir>/node_modules/', '<rootDir>/.next/'],
   transform: {
-    '^.+\\.(js|jsx|ts|tsx)$': ['babel-jest', { configFile: './jest.babel.config.js' }]
+    '^.+\\.(js|jsx|ts|tsx)$': ['babel-jest', { configFile: './babel.config.js' }]
   },
-  extensionsToTreatAsEsm: ['.ts', '.tsx', '.jsx']
+  extensionsToTreatAsEsm: ['.ts', '.tsx', '.jsx'],
+  globals: {
+    'ts-jest': {
+      tsconfig: '<rootDir>/tsconfig.jest.json',
+      jsx: 'react-jsx'
+    }
+  }
 }; 

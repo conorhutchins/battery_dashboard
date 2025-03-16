@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { useBattery } from '../../hooks/useBattery';
+import { useBattery } from '../../hooks/useBatteryData/useBattery';
 import { formatLastUpdatedTime } from '../../utils/batteryUtils';
 import BatteryChart from '../BatteryChart/BatteryChart';
 

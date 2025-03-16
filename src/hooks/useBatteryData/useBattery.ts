@@ -1,9 +1,9 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { mockBattery, batteryHistoryData } from '../data/batteryMockData';
-import { BatteryCardProps } from '../types';
-import { isBatteryLow, getChargeColorClass, getChargingStatusText, getChargingStatusColorClass } from '../utils/batteryUtils';
+import { mockBattery, batteryHistoryData } from '../../data/batteryMockData';
+import { BatteryCardProps } from '../../types';
+import { isBatteryLow, getChargeColorClass, getChargingStatusText, getChargingStatusColorClass } from '../../utils/batteryUtils';
 
 export const useBattery = () => {
   const [battery, setBattery] = useState<BatteryCardProps>(mockBattery);

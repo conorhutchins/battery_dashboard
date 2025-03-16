@@ -9,7 +9,7 @@ const mockBatteryHistory = [
   { timestamp: new Date(Date.now() - 7200000), chargeLevel: 70, isCharging: false }
 ];
 
-jest.mock('../../hooks/useBattery', () => ({
+jest.mock('../../hooks/useBatteryData/useBattery', () => ({
   useBattery: () => ({
     batteryHistory: mockBatteryHistory
   })
