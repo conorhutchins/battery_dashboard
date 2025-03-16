@@ -28,3 +28,12 @@ export interface BatteryData {
     lastUpdated?: Date;
     onCardClick?: (id: string) => void;
   }
+  export interface BatteryChartProps {
+    isVisible: boolean;
+  }
+
+  export interface BatteryHistoryEntry {
+    timestamp: Date;
+    chargeLevel: number;
+    isCharging: boolean;
+  }
