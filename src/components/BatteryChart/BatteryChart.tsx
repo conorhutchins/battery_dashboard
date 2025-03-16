@@ -12,7 +12,7 @@ import {
   ResponsiveContainer
 } from 'recharts';
 import { format } from 'date-fns';
-import { useBattery } from '../../_hooks/useBattery';
+import { useBattery } from '../../hooks/useBattery';
 import { BatteryChartProps, BatteryHistoryEntry } from '../../types';
 
 const BatteryChart: React.FC<BatteryChartProps> = ({ isVisible }) => {
