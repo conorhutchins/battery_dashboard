@@ -44,7 +44,7 @@ const BatteryCard: React.FC = () => {
   return (
     <div className="w-full max-w-md mx-auto transition-all duration-300 ease-in-out">
       <div 
-        className={`rounded-lg shadow-lg p-6 bg-card text-card-foreground transition-all duration-300 ease-in-out cursor-pointer ${isExpanded ? 'rounded-b-none shadow-md' : ''}`}
+        className={`rounded-lg shadow-lg p-6 bg-card text-card-foreground transition-all duration-300 ease-in-out cursor-pointer hover:shadow-xl ${isExpanded ? 'rounded-b-none shadow-md' : ''}`}
         onClick={handleCardClick}
       >
         <div className="flex justify-between items-center mb-4">
@@ -75,8 +75,27 @@ const BatteryCard: React.FC = () => {
           </div>
         </div>
 
-        <div className="text-xs text-muted-foreground text-right">
-          Last updated: {formatLastUpdatedTime(battery.lastUpdated)}
+        <div className="flex justify-between items-center">
+          <div className="text-xs text-primary flex items-center">
+            {isExpanded ? (
+              <span className="flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-1">
+                  <polyline points="18 15 12 9 6 15"></polyline>
+                </svg>
+                Click to hide history
+              </span>
+            ) : (
+              <span className="flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-1">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+                Click to view charge history
+              </span>
+            )}
+          </div>
+          <div className="text-xs text-muted-foreground">
+            Last updated: {formatLastUpdatedTime(battery.lastUpdated)}
+          </div>
         </div>
       </div>
       
