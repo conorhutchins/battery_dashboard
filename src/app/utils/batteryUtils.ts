@@ -2,16 +2,16 @@ export const isBatteryLow = (chargeLevel: number): boolean =>
   chargeLevel <= 20;
 
 export const getChargeColorClass = (chargeLevel: number): string => {
-  if (chargeLevel <= 20) return 'bg-red-500';
-  if (chargeLevel <= 50) return 'bg-yellow-500';
-  return 'bg-green-500';
+  if (chargeLevel <= 20) return 'bg-danger';
+  if (chargeLevel <= 50) return 'bg-warning';
+  return 'bg-success';
 };
 
 export const getChargingStatusText = (isCharging: boolean): string => 
   isCharging ? 'Charging' : 'Not Charging';
 
 export const getChargingStatusColorClass = (isCharging: boolean): string => 
-  isCharging ? 'bg-blue-500' : 'bg-gray-400';
+  isCharging ? 'bg-primary' : 'bg-muted-foreground';
 
 export const formatLastUpdatedTime = (date?: Date): string => {
   return date
