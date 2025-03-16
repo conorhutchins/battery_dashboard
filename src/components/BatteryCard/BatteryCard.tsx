@@ -23,7 +23,7 @@ const BatteryCard: React.FC = () => {
 
   if (isLoading) {
     return (
-      <div className="w-full max-w-md mx-auto animate-float">
+      <div className="w-full max-w-md mx-auto animate-float" data-testid="loading-skeleton">
         <div className="rounded-lg shadow-md p-6 bg-card max-w-md mx-auto border border-border relative overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent animate-shimmer" 
             style={{ backgroundSize: '200% 100%' }}></div>
