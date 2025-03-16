@@ -19,4 +19,12 @@ export interface BatteryData {
         }>;
       } 
   }
-  
+  export interface BatteryCardProps {
+    id: string;
+    name: string;
+    capacity: number;
+    chargeLevel: number; 
+    isCharging: boolean;
+    lastUpdated?: Date;
+    onCardClick?: (id: string) => void;
+  }

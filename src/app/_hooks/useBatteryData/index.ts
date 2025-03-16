@@ -1,2 +1,2 @@
-export { useBatteryData } from './useBatteryData';
+export { useBattery } from '../useBattery';
 export type { BatteryData } from '@/app/types';
