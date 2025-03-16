@@ -2,10 +2,43 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Variables */
+/* Theme Variables */
 :root {
-  --foreground: #000;
-  --background: #fff;
+  --foreground: #111827;
+  --background: #ffffff;
+  --card: #ffffff;
+  --card-foreground: #111827;
+  --primary: #0ea5e9;
+  --primary-foreground: #ffffff;
+  --muted: #f3f4f6;
+  --muted-foreground: #6b7280;
+  --accent: #f3f4f6;
+  --accent-foreground: #111827;
+  --success: #10b981;
+  --warning: #f59e0b;
+  --danger: #ef4444;
+  --border: #e5e7eb;
+  --input: #e5e7eb;
+  --ring: #0ea5e9;
+}
+
+.dark {
+  --foreground: #f9fafb;
+  --background: #111827;
+  --card: #1f2937;
+  --card-foreground: #f9fafb;
+  --primary: #0ea5e9;
+  --primary-foreground: #f9fafb;
+  --muted: #374151;
+  --muted-foreground: #9ca3af;
+  --accent: #1f2937;
+  --accent-foreground: #f9fafb;
+  --success: #10b981;
+  --warning: #f59e0b;
+  --danger: #ef4444;
+  --border: #374151;
+  --input: #374151;
+  --ring: #0ea5e9;
 }
 
 /* Base styles */

@@ -1,11 +1,20 @@
 import BatteryCard from './components/BatteryCard';
+import { ThemeToggle } from './components/ThemeToggle';
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center p-4 bg-gray-50">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold text-blue-500 mb-8">Battery Dashboard</h1>
-        <BatteryCard />
+    <main className="min-h-screen p-6 bg-background text-foreground">
+      <div className="container mx-auto max-w-6xl">
+        <header className="flex items-center mb-6 relative">
+          <h1 className="text-2xl font-bold w-full text-center">Battery Dashboard</h1>
+          <div className="absolute right-0">
+            <ThemeToggle />
+          </div>
+        </header>
+        
+        <div className="flex justify-center">
+          <BatteryCard />
+        </div>
       </div>
     </main>
   );

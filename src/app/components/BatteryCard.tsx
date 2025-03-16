@@ -23,20 +23,20 @@ const BatteryCard: React.FC = () => {
 
   if (isLoading) {
     return (
-      <div className="rounded-lg shadow-lg p-6 bg-white max-w-md mx-auto animate-pulse">
-        <div className="h-6 bg-slate-200 rounded mb-4"></div>
-        <div className="h-24 bg-slate-200 rounded mb-4"></div>
-        <div className="h-4 bg-slate-200 rounded w-3/4 mb-2"></div>
-        <div className="h-4 bg-slate-200 rounded"></div>
+      <div className="rounded-lg shadow-lg p-6 bg-card max-w-md mx-auto animate-pulse">
+        <div className="h-6 bg-muted rounded mb-4"></div>
+        <div className="h-24 bg-muted rounded mb-4"></div>
+        <div className="h-4 bg-muted rounded w-3/4 mb-2"></div>
+        <div className="h-4 bg-muted rounded"></div>
       </div>
     );
   }
 
   if (error) {
     return (
-      <div className="rounded-lg shadow-lg p-6 bg-white max-w-md mx-auto border-l-4 border-red-500">
-        <h2 className="text-xl font-bold mb-4">Battery Information</h2>
-        <p className="text-red-500">{error}</p>
+      <div className="rounded-lg shadow-lg p-6 bg-card max-w-md mx-auto border-l-4 border-danger">
+        <h2 className="text-xl font-bold mb-4 text-card-foreground">Battery Information</h2>
+        <p className="text-danger">{error}</p>
       </div>
     );
   }
@@ -44,7 +44,7 @@ const BatteryCard: React.FC = () => {
   return (
     <div className="w-full max-w-md mx-auto transition-all duration-300 ease-in-out">
       <div 
-        className={`rounded-lg shadow-lg p-6 bg-white transition-all duration-300 ease-in-out cursor-pointer ${isExpanded ? 'rounded-b-none shadow-md' : ''}`}
+        className={`rounded-lg shadow-lg p-6 bg-card text-card-foreground transition-all duration-300 ease-in-out cursor-pointer ${isExpanded ? 'rounded-b-none shadow-md' : ''}`}
         onClick={handleCardClick}
       >
         <div className="flex justify-between items-center mb-4">
@@ -56,18 +56,18 @@ const BatteryCard: React.FC = () => {
 
         <div className="mb-6">
           <div className="flex justify-between mb-2">
-            <span className="text-gray-600">Capacity</span>
+            <span className="text-muted-foreground">Capacity</span>
             <span className="font-medium">{battery.capacity} mAh</span>
           </div>
           
           <div className="flex justify-between mb-2">
-            <span className="text-gray-600">Charge Level</span>
-            <span className={`font-medium ${isBatteryLow() ? 'text-red-500' : ''}`}>
+            <span className="text-muted-foreground">Charge Level</span>
+            <span className={`font-medium ${isBatteryLow() ? 'text-danger' : ''}`}>
               {battery.chargeLevel}%
             </span>
           </div>
           
-          <div className="w-full bg-gray-200 rounded-full h-2.5">
+          <div className="w-full bg-muted rounded-full h-2.5">
             <div 
               className={`h-2.5 rounded-full ${getChargeColorClass()}`}
               style={{ width: `${battery.chargeLevel}%` }}
@@ -75,14 +75,14 @@ const BatteryCard: React.FC = () => {
           </div>
         </div>
 
-        <div className="text-xs text-gray-500 text-right">
+        <div className="text-xs text-muted-foreground text-right">
           Last updated: {formatLastUpdatedTime(battery.lastUpdated)}
         </div>
       </div>
       
       {/* Render the chart component in a separate container if expanded */}
       {isExpanded && (
-        <div className="bg-white rounded-b-lg shadow-lg p-6 border-t border-gray-100">
+        <div className="bg-card rounded-b-lg shadow-lg p-6 border-t border-border">
           <BatteryChart isVisible={isExpanded} />
         </div>
       )}

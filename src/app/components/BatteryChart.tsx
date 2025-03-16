@@ -28,24 +28,31 @@ const BatteryChart: React.FC<BatteryChartProps> = ({ isVisible }) => {
   }));
   
   return (
-    <div className="mt-6 pt-6 border-t border-gray-200 transition-all duration-500 ease-in-out">
-      <h3 className="text-lg font-semibold mb-4">Battery History (Last 24h)</h3>
+    <div className="mt-6 pt-6 border-t border-border transition-all duration-500 ease-in-out">
+      <h3 className="text-lg font-semibold mb-4 text-card-foreground">Battery History (Last 24h)</h3>
       <div className="h-64">
         <ResponsiveContainer width="100%" height="100%">
           <LineChart
             data={chartData}
             margin={{ top: 5, right: 5, left: 0, bottom: 5 }}
           >
-            <CartesianGrid strokeDasharray="3 3" />
+            <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" />
             <XAxis 
               dataKey="time" 
-              tick={{ fontSize: 12 }} 
+              tick={{ fontSize: 12, fill: 'var(--card-foreground)' }} 
               interval="preserveStartEnd"
+              stroke="var(--border)"
             />
             <YAxis 
               domain={[0, 100]} 
-              tick={{ fontSize: 12 }}
-              label={{ value: 'Charge %', angle: -90, position: 'insideLeft', style: { textAnchor: 'middle' } }}
+              tick={{ fontSize: 12, fill: 'var(--card-foreground)' }}
+              stroke="var(--border)"
+              label={{ 
+                value: 'Charge %', 
+                angle: -90, 
+                position: 'insideLeft', 
+                style: { textAnchor: 'middle', fill: 'var(--card-foreground)' } 
+              }}
             />
             <Tooltip 
               formatter={(value, name) => [
@@ -53,15 +60,22 @@ const BatteryChart: React.FC<BatteryChartProps> = ({ isVisible }) => {
                 name === 'level' ? 'Charge Level' : 'Status'
               ]}
               labelFormatter={(label) => `Time: ${label}`}
+              contentStyle={{ 
+                backgroundColor: 'var(--card)', 
+                color: 'var(--card-foreground)',
+                border: '1px solid var(--border)' 
+              }}
             />
-            <Legend />
+            <Legend 
+              wrapperStyle={{ color: 'var(--card-foreground)' }}
+            />
             <Line 
               type="monotone" 
               dataKey="level" 
-              stroke="#3b82f6" 
+              stroke="var(--primary)" 
               strokeWidth={2}
-              dot={{ strokeWidth: 2, r: 4 }}
-              activeDot={{ r: 6, stroke: '#1d4ed8', strokeWidth: 2 }}
+              dot={{ strokeWidth: 2, r: 4, fill: 'var(--card)', stroke: 'var(--primary)' }}
+              activeDot={{ r: 6, fill: 'var(--card)', stroke: 'var(--primary)', strokeWidth: 2 }}
               name="Charge Level"
             />
           </LineChart>

@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 // Remove the font import temporarily to fix the error
 // import { Inter } from 'next/font/google';
 import './globals.css';
+import { ThemeProvider } from './components/ThemeProvider';
 
 // const inter = Inter({ subsets: ['latin'] });
 
@@ -16,8 +17,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body suppressHydrationWarning={true}>{children}</body>
+    <html lang="en" suppressHydrationWarning>
+      <body suppressHydrationWarning={true}>
+        <ThemeProvider>{children}</ThemeProvider>
+      </body>
     </html>
   );
 }
