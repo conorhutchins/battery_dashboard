@@ -28,7 +28,7 @@ const BatteryChart: React.FC<BatteryChartProps> = ({ isVisible }) => {
   }));
   
   return (
-    <div className="mt-2 transition-all duration-500 transform ease-in-out">
+    <div className="transition-all duration-200 transform ease-out origin-top">
       <h3 className="text-lg font-semibold mb-6 text-card-foreground flex items-center">
         <div className="flex items-center justify-center bg-primary rounded-full p-1 mr-2">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-white">

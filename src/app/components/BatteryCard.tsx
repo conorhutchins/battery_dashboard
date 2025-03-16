@@ -23,25 +23,40 @@ const BatteryCard: React.FC = () => {
 
   if (isLoading) {
     return (
-      <div className="rounded-lg shadow-lg p-6 bg-card max-w-md mx-auto border border-border">
-        <div className="flex justify-between items-center mb-4">
-          <div className="h-7 bg-muted rounded w-40 animate-pulse"></div>
-          <div className="h-6 w-24 bg-muted rounded-full animate-pulse"></div>
-        </div>
-        <div className="mb-6 space-y-4">
-          <div className="flex justify-between mb-2">
-            <div className="h-4 bg-muted rounded w-24 animate-pulse"></div>
-            <div className="h-4 bg-muted rounded w-16 animate-pulse"></div>
+      <div className="w-full max-w-md mx-auto animate-float">
+        <div className="rounded-lg shadow-md p-6 bg-card max-w-md mx-auto border border-border relative overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent animate-shimmer" 
+            style={{ backgroundSize: '200% 100%' }}></div>
+            
+          <div className="flex justify-between items-center mb-4 relative z-10">
+            <div className="flex items-center gap-2">
+              <div className="h-8 w-8 rounded bg-muted/50"></div>
+              <div className="h-7 bg-muted/50 rounded w-40"></div>
+            </div>
+            <div className="h-6 w-24 bg-muted/50 rounded-full"></div>
           </div>
-          <div className="flex justify-between mb-2">
-            <div className="h-4 bg-muted rounded w-28 animate-pulse"></div>
-            <div className="h-4 bg-muted rounded w-10 animate-pulse"></div>
+          
+          <div className="mb-6 space-y-4 relative z-10">
+            <div className="flex justify-between mb-2">
+              <div className="h-4 bg-muted/50 rounded w-24"></div>
+              <div className="h-4 bg-muted/50 rounded w-16"></div>
+            </div>
+            <div className="flex justify-between mb-2">
+              <div className="h-4 bg-muted/50 rounded w-28"></div>
+              <div className="flex items-center">
+                <div className="h-4 bg-muted/50 rounded w-10 mr-1"></div>
+                <div className="h-5 w-5 bg-muted/50 rounded"></div>
+              </div>
+            </div>
+            <div className="w-full bg-muted/30 rounded-full h-3 shadow-inner overflow-hidden">
+              <div className="w-4/5 h-full bg-muted/50 rounded-full"></div>
+            </div>
           </div>
-          <div className="w-full bg-muted rounded-full h-3 shadow-inner overflow-hidden animate-pulse"></div>
-        </div>
-        <div className="flex justify-between items-center">
-          <div className="h-4 bg-muted rounded w-40 animate-pulse"></div>
-          <div className="h-4 bg-muted rounded w-32 animate-pulse"></div>
+          
+          <div className="flex justify-between items-center relative z-10">
+            <div className="h-4 bg-muted/50 rounded w-40"></div>
+            <div className="h-4 bg-muted/50 rounded w-32"></div>
+          </div>
         </div>
       </div>
     );
@@ -64,9 +79,9 @@ const BatteryCard: React.FC = () => {
   }
 
   return (
-    <div className="w-full max-w-md mx-auto transition-all duration-300 ease-in-out">
+    <div className="w-full max-w-md mx-auto transition-all duration-300 ease-in-out animate-float">
       <div 
-        className={`rounded-lg shadow-md p-6 bg-card text-card-foreground transition-all duration-300 ease-in-out cursor-pointer hover:shadow-xl hover:translate-y-[-2px] border border-border ${isExpanded ? 'rounded-b-none border-b-0' : ''}`}
+        className={`rounded-lg shadow-md p-6 bg-card text-card-foreground transition-all duration-150 ease-out cursor-pointer hover:shadow-xl hover:translate-y-[-2px] active:scale-98 border border-border ${isExpanded ? 'rounded-b-none border-b-0' : ''}`}
         onClick={handleCardClick}
       >
         <div className="flex justify-between items-center mb-4">
@@ -155,9 +170,20 @@ const BatteryCard: React.FC = () => {
           
           <div className="w-full bg-muted rounded-full h-3 shadow-inner overflow-hidden">
             <div 
-              className={`h-full rounded-full ${getChargeColorClass()} transition-all duration-500 ease-out`}
-              style={{ width: `${battery.chargeLevel}%` }}
+              className={`h-full rounded-full transition-all duration-500 ease-out relative`}
+              style={{ 
+                width: `${battery.chargeLevel}%`,
+                background: `linear-gradient(90deg, ${battery.chargeLevel < 20 ? 'var(--danger)' : battery.chargeLevel < 50 ? 'var(--warning)' : 'var(--success)'}, ${battery.chargeLevel < 20 ? 'var(--danger)' : battery.chargeLevel < 50 ? 'var(--warning)' : 'var(--primary)'})`
+              }}
             >
+              <div className="absolute top-0 left-0 right-0 bottom-0 overflow-hidden">
+                <div className="absolute top-0 right-0 bottom-0 left-0" 
+                  style={{ 
+                    backgroundImage: 'linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.13) 50%, rgba(255,255,255,0) 100%)',
+                    animation: battery.isCharging ? 'shimmer 2s infinite' : 'none'
+                  }}>
+                </div>
+              </div>
               {battery.isCharging && (
                 <div className="h-full w-full bg-gradient-to-r from-transparent via-white/20 to-transparent animate-pulse opacity-70"></div>
               )}
@@ -191,13 +217,17 @@ const BatteryCard: React.FC = () => {
       
       {/* Render the chart component in a separate container if expanded */}
       <div 
-        className={`bg-card rounded-b-lg shadow-md p-6 border border-t-0 border-border overflow-hidden transition-all duration-500 ease-in-out ${
-          isExpanded ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0 p-0'
+        className={`glass bg-card/90 rounded-b-lg shadow-md border border-t-0 border-border overflow-hidden transition-all duration-300 ease-out ${
+          isExpanded 
+            ? 'max-h-[500px] opacity-100 p-6 transform-none' 
+            : 'max-h-0 opacity-0 p-0 scale-98 -translate-y-4'
         }`}
         aria-hidden={!isExpanded}
         aria-expanded={isExpanded}
       >
-        <BatteryChart isVisible={isExpanded} />
+        <div className={`transition-opacity duration-300 ease-out ${isExpanded ? 'opacity-100' : 'opacity-0'}`}>
+          <BatteryChart isVisible={isExpanded} />
+        </div>
       </div>
     </div>
   );
